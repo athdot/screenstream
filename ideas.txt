@@ -1,6 +1,6 @@
 Run this code for frame by frame pictures...
 
-<style>#video {width:320px}</style>
+<input type="text" id="framesmade" value="0" style="display:none;" /><p id="secs"></p>
 <div id=thumbs>Loading video in background...</div>
 <script>
 var i = 0;
@@ -18,7 +18,7 @@ video.addEventListener('seeked', function() {
     generateThumbnail(i);
 
     // when frame is captured, increase
-    i++;
+    i += 0.02;
 
     // if we are not passed end, seek to next interval
     if (i <= video.duration) {
@@ -26,8 +26,7 @@ video.addEventListener('seeked', function() {
         video.currentTime = i;
     }
 	else {
-        // DONE!, next action
-		alert("done!")
+		console.log("done!")
     }
 
 }, false);
@@ -36,11 +35,16 @@ video.preload = "auto"
 video.src = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 
 function generateThumbnail() {
+  var frames = parseInt(document.getElementById("framesmade").value);
   var c = document.createElement("canvas");
   var ctx = c.getContext("2d");
-  c.width = 320;
-  c.height = 180;
-  ctx.drawImage(video, 0, 0, 320, 180);
+  c.width = video.videoWidth;
+  c.height = video.videoHeight;
+  c.id = "vid"+frames;
+  c.style = "display:none;"
+  ctx.drawImage(video, 0, 0, c.width, c.height);
   thumbs.appendChild(c);
+  document.getElementById("framesmade").value = frames + 1;
+  document.getElementById("secs").innerHTML = "Total Seconds loaded: " + frames/50;
 }
 </script>
