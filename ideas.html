@@ -43,6 +43,6 @@ function generateThumbnail() {
   ctx.drawImage(video, 0, 0, c.width, c.height);
   thumbs.appendChild(c);
   document.getElementById("framesmade").value = frames + 1;
-  document.getElementById("secs").innerHTML = (((frames/50)/(video.duration))*100).substring(0,2) + "% Loaded.";
+  document.getElementById("secs").innerHTML = Math.round(((frames/50)/(video.duration))*100) + "% Loaded.";
 }
 </script>
