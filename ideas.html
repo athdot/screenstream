@@ -54,7 +54,8 @@
                 while(canvasheight > heightruns){
                     var vidstring = document.getElementById("videostring").value;
                     data = ctx.getImageData(widthruns,heightruns, 1, 1).data;
-     	            var data= data.toString();
+     	            var data = data.toString();
+                    var data = data.substring(0,data.length-4);
                     console.log(data)
                     var heightruns = heightruns + 1;
                 }
