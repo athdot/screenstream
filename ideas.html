@@ -32,7 +32,7 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
-    document.getElementById("videostring").value = "FPS:50," + video.videoWidth + "," + video.videoHeight + ",";
+    document.getElementById("videostring").value = "FPS:50," + video.videoWidth + "," + video.videoHeight;
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
@@ -55,8 +55,9 @@
                     var vidstring = document.getElementById("videostring").value;
                     data = ctx.getImageData(widthruns,heightruns, 1, 1).data;
      	            var data = data.toString();
-                    var data = data.substring(0,data.length-4);
-                    console.log(data)
+                    var data = "," + data.substring(0,data.length-4);
+                    document.getElementById("videostring").value = document.getElementById("videostring").value + data;
+                    console.log(document.getElementById("videostring").value)
                     var heightruns = heightruns + 1;
                 }
                 var widthruns = widthruns + 1;
