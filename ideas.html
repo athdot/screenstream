@@ -18,7 +18,8 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            console.log(document.getElementById("videostring").value)
+            console.log(document.cookie);
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
     }, false);
 
@@ -32,7 +33,7 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
-    document.getElementById("videostring").value = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+    document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
@@ -52,14 +53,14 @@
             var canvasheight = c.height;
             while(canvaswidth > widthruns){
                 while(canvasheight > heightruns){
-                    var vidstring = document.getElementById("videostring").value;
+                    var vidstring = document.cookie;
                     data = ctx.getImageData(widthruns,heightruns, 1, 1).data;
      	            var data = data.toString();
                     var data = "," + data.substring(0,data.length-4);
-                    document.getElementById("videostring").value = document.getElementById("videostring").value + data;
+                    document.cookie = = document.cookie + data;
                     var heightruns = heightruns + 1;
                 }
-                document.getElementById("videostring").value = document.getElementById("videostring").value + ",F"
+                document.cookie = document.cookie + ",F"
                 var widthruns = widthruns + 1;
             }
             document.getElementById("vid"+frames).remove();
