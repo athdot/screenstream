@@ -1,4 +1,5 @@
 <input type="text" id="framesmade" value="0" style="display:none;" />
+<input type="text" id="videostring" value="NaN" style="display:none;" />
 <div id=thumbs>Loading video in background...</div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
@@ -22,7 +23,7 @@
     }, false);
 
     video.preload = "auto"
-    video.src = "https://media.w3.org/2010/05/sintel/trailer.mp4";
+    video.src = "https://athdot.github.io/screenstream/trailer.mp4";
     var cs = document.createElement("canvas");
     cs.id = "loadbar"
     cs.style = "position:absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); border: 1px solid; border-radius: 15px;"
@@ -31,6 +32,7 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
+    document.getElementById("videostring").value = "FPS:50," + video.videoWidth + "," + video.videoHeight + ",";
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
@@ -42,6 +44,23 @@
         c.style = "display:none;"
         ctx.drawImage(video, 0, 0, c.width, c.height);
         thumbs.appendChild(c);
+        //Insert image converter here
+        {
+            var widthruns = 0;
+            var heightruns = 0;
+            var canvaswidth = c.width;
+            var canvasheight = c.height;
+            while(canvaswidth > widthruns){
+                while(canvasheight > heightruns){
+                    var vidstring = document.getElementById("videostring").value;
+                    var data = context.getImageData(widthruns, heightruns, 1, 1).data;
+                    console.log(data)
+                    var heightruns = heightruns + 1;
+                }
+                var widthruns = widthruns + 1;
+            }
+        }
+        //End converter
         document.getElementById("framesmade").value = frames + 1;
         var cs = document.getElementById("loadbar");
         cs.width = window.innerWidth / 2;
