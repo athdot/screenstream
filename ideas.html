@@ -1,4 +1,4 @@
-<input type="text" id="framesmade" value="0" style="display:none;" /><p id="secs"></p>
+<input type="text" id="framesmade" value="0" style="display:none;" />
 <div id=thumbs>Loading video in background...</div>
 <script>
 var i = 0;
@@ -31,6 +31,12 @@ video.addEventListener('seeked', function() {
 
 video.preload = "auto"
 video.src = "https://media.w3.org/2010/05/sintel/trailer.mp4";
+var cs = document.createElement("canvas");
+cs.id = "loadbar"
+cs.style = "position:absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); border: 1px solid; border-radius: 15px;"
+cs.width = window.innerWidth/2;
+cs.height = "30";
+document.body.appendChild(cs);
 
 function generateThumbnail() {
   var frames = parseInt(document.getElementById("framesmade").value);
@@ -43,6 +49,13 @@ function generateThumbnail() {
   ctx.drawImage(video, 0, 0, c.width, c.height);
   thumbs.appendChild(c);
   document.getElementById("framesmade").value = frames + 1;
-  document.getElementById("secs").innerHTML = Math.round(((frames/50)/(video.duration))*100) + "% Loaded.";
+  var cs = document.getElementById("loadbar");
+  var percent = Math.round(((frames/50)/(video.duration))*100);
+  var filled = (percent/100)*cs.width;
+  var ctxi = cs.getContext("2d");
+  ctxi.fillStyle="lightblue";
+  ctxi.fillRect(0,0,filled,30);
+  ctxi.fillStyle="#9BC2CF";
+  ctxi.fillRect(filled,0,2,30);
 }
 </script>
