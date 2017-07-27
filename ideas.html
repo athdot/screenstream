@@ -50,6 +50,8 @@ function generateThumbnail() {
   thumbs.appendChild(c);
   document.getElementById("framesmade").value = frames + 1;
   var cs = document.getElementById("loadbar");
+  cs.width = window.innerWidth/2;
+  cs.height = "30";
   var percent = (((frames/50)/(video.duration))*100);
   var filled = (percent/100)*cs.width;
   var ctxi = cs.getContext("2d");
