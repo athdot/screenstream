@@ -18,7 +18,7 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            console.log("done!")
+            console.log(document.getElementById("videostring").value)
         }
     }, false);
 
@@ -57,7 +57,6 @@
      	            var data = data.toString();
                     var data = "," + data.substring(0,data.length-4);
                     document.getElementById("videostring").value = document.getElementById("videostring").value + data;
-                    console.log(document.getElementById("videostring").value)
                     var heightruns = heightruns + 1;
                 }
                 document.getElementById("videostring").value = document.getElementById("videostring").value + ",F"
