@@ -2,28 +2,12 @@
 <div id=thumbs>Loading video in background...</div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
-    var i = 0;
+    var time = 0;
     var video = document.createElement("video");
     var thumbs = document.getElementById("thumbs");
-
-    video.addEventListener('loadeddata', function() {
-        thumbs.innerHTML = "";
-        video.currentTime = i;
-    }, false);
-
-    video.addEventListener('seeked', function() {
-        generateThumbnail(i);
-        i += 0.02;
-        if (i <= video.duration) {
-            video.currentTime = i;
-        } else {
-            console.log(document.cookie);
-            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    }, false);
-
     video.preload = "auto"
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
+    
     var cs = document.createElement("canvas");
     cs.id = "loadbar"
     cs.style = "position:absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); border: 1px solid; border-radius: 15px;"
@@ -44,6 +28,7 @@
     },100);
 
     function generateThumbnail() {
+        video.currentTime = time;
         var frames = parseInt(document.getElementById("framesmade").value);
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
@@ -96,5 +81,6 @@
             var finished = secs2 + " Seconds left";
         }
         document.getElementById("secsleft").innerHTML = finished;
+        time += 0.02;
     }
 </script>
