@@ -21,6 +21,7 @@
     video.preload = "auto"
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
     video.id = "vidmaster";
+    video.style = "display:none;";
     thumbs.appendChild(video);
     var cs = document.createElement("canvas");
     cs.id = "loadbar"
@@ -31,6 +32,7 @@
     var startDate = new Date();
     var startTime = startDate.getTime();
     setTimeout(function(){
+        var video = document.getElementById("vidmaster");
         document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
