@@ -6,7 +6,6 @@
     var video = document.createElement("video");
     var thumbs = document.getElementById("thumbs");
     video.addEventListener('loadeddata', function() {
-        thumbs.innerHTML = "";
         video.currentTime = i;
     }, false);
     video.addEventListener('seeked', function() {
