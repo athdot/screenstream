@@ -1,10 +1,9 @@
+<body>
 <input type="text" id="framesmade" value="0" style="display:none;" />
-<div id=thumbs>Loading video in background...</div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
     var time = 0;
     var video = document.createElement("video");
-    var thumbs = document.getElementById("thumbs");
     video.preload = "auto"
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
     
@@ -24,7 +23,7 @@
         console.log(c.width);
         c.height = video.videoHeight;
         c.id = "vid";
-        thumbs.appendChild(c);
+        document.body.appendChild(c);
     },100);
 
     while(video.currentTime < video.duration) {
@@ -84,3 +83,4 @@
         time += 0.02;
     }
 </script>
+</body>
