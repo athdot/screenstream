@@ -87,18 +87,7 @@
         var framespersecond = (frames / secspast);
         var secsleft = vidlen / framespersecond;
         var secs2 = (Math.round(secsleft));
-        if (secs2 >= 60) {
-            var min = (secs2 / 60);
-            var min2 = min + "";
-            var minutes = Math.round(min);
-            var minutenstring = minutes + "";
-            var lengbin = minutenstring.length;
-            var seconds = min2.substring(lengbin, min2.length);
-            var seconds2 = Math.round(seconds * 60);
-            var finished = minutes + " Minutes and " + seconds2 + " Seconds left"
-        } else {
-            var finished = secs2 + " Seconds left";
-        }
+        var finished = secs2 + " Seconds left"
         document.getElementById("secsleft").innerHTML = finished;
     }
 </script>
