@@ -15,7 +15,12 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            document.getElementById("completelength").style = "width: 100%; height: 100%; position:absolute; top: 0; left: 0;";
+            var textToSave = document.getElementById("completelength").innerHTML
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'myFile.txt';
+            hiddenElement.click();
         }
     }, false);
     video.preload = "auto"
