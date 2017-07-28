@@ -32,7 +32,9 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
-    document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+    setTimeout(function(){
+        document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+    },100);
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
