@@ -40,7 +40,7 @@
     },100);
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
-        var c = document.getElementById("vid");
+        var c = thumbs.getElementById("vid");
         var ctx = c.getContext("2d");
         ctx.drawImage(video, 0, 0, c.width, c.height);
         //Insert image converter here
