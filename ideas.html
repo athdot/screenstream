@@ -47,11 +47,8 @@
         var c = document.getElementById("vid");
         var ctx = c.getContext("2d");
         ctx.drawImage(video, 0, 0, c.width, c.height);
-        //Insert image converter here
         var frame = c.toDataURL("image/png");
-        console.log(frame);
         document.cookie = document.cookie + "," + frame;
-        //End converter
         document.getElementById("framesmade").value = frames + 1;
         var cs = document.getElementById("loadbar");
         cs.width = window.innerWidth / 2;
