@@ -42,9 +42,9 @@
     function generateThumbnail() {
         var video = document.getElementById("vidmaster");
         var frames = parseInt(document.getElementById("framesmade").value);
-        var co = document.getElementById("vid");
-        var ctxo = co.getContext("2d");
-        ctxo.drawImage(video, 0, 0, co.width, co.height);
+        var c = document.getElementById("vid");
+        var ctx = c.getContext("2d");
+        ctx.drawImage(video, 0, 0, c.width, c.height);
         //Insert image converter here
         {
             var widthruns = 0;
