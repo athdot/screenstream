@@ -17,7 +17,7 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            document.write(document.cookie);
+            console.log(document.cookie);
             document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
     }, false);
@@ -41,6 +41,7 @@
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
         c.width = video.videoWidth;
+        console.log(c.width);
         c.height = video.videoHeight;
         c.id = "vid" + frames;
         c.style = "display:none;"
