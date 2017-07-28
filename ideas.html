@@ -31,7 +31,6 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
-    setTimeout(function(){
         var video = document.getElementById("vidmaster");
         document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
         var c = document.createElement("canvas");
@@ -40,7 +39,6 @@
         c.height = video.videoHeight;
         c.id = "vid";
         thumbs.appendChild(c);
-    },100);
     function generateThumbnail() {
         var video = document.getElementById("vidmaster");
         var frames = parseInt(document.getElementById("framesmade").value);
@@ -48,24 +46,9 @@
         var ctx = c.getContext("2d");
         ctx.drawImage(video, 0, 0, c.width, c.height);
         //Insert image converter here
-        {
-            var widthruns = 0;
-            var heightruns = 0;
-            var canvaswidth = c.width;
-            var canvasheight = c.height;
-            while(canvaswidth >= widthruns){
-                while(canvasheight >= heightruns){
-                    var vidstring = document.cookie;
-                    data = ctx.getImageData(widthruns,heightruns, 1, 1).data;
-     	            var data = data.toString();
-                    var data = "," + data.substring(0,data.length-4);
-                    document.cookie = document.cookie + data;
-                    var heightruns = heightruns + 1;
-                }
-                document.cookie = document.cookie + ",F"
-                var widthruns = widthruns + 1;
-            }
-        }
+        var frame = c.toDataURL("image/png");
+        console.log(frame);
+        document.cookie = document.cookie + "," + frame;
         //End converter
         document.getElementById("framesmade").value = frames + 1;
         var cs = document.getElementById("loadbar");
