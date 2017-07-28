@@ -24,7 +24,6 @@
 
     video.preload = "auto"
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
-    thumbs.appendChild(video);
     var cs = document.createElement("canvas");
     cs.id = "loadbar"
     cs.style = "position:absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); border: 1px solid; border-radius: 15px;"
@@ -35,14 +34,14 @@
     var startTime = startDate.getTime();
     setTimeout(function(){
         document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+        var c = document.createElement("canvas");
+        var ctx = c.getContext("2d");
+        c.width = video.videoWidth;
+        console.log(c.width);
+        c.height = video.videoHeight;
+        c.id = "vid";
+        thumbs.appendChild(c);
     },100);
-    var c = document.createElement("canvas");
-    var ctx = c.getContext("2d");
-    c.width = video.videoWidth;
-    console.log(c.width);
-    c.height = video.videoHeight;
-    c.id = "vid";
-    thumbs.appendChild(c);
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
