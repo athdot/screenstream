@@ -21,6 +21,8 @@
     }, false);
     video.preload = "auto"
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
+    video.id = "vidmaster";
+    thumbs.appendChild(video);
     var cs = document.createElement("canvas");
     cs.id = "loadbar"
     cs.style = "position:absolute; top: 50%; left: 50%; transform:translate(-50%,-50%); border: 1px solid; border-radius: 15px;"
@@ -39,10 +41,11 @@
         thumbs.appendChild(c);
     },100);
     function generateThumbnail() {
+        var video = document.getElementById("vidmaster");
         var frames = parseInt(document.getElementById("framesmade").value);
-        var c = thumbs.getElementById("vid");
-        var ctx = c.getContext("2d");
-        ctx.drawImage(video, 0, 0, c.width, c.height);
+        var co = document.getElementById("vid");
+        var ctxo = co.getContext("2d");
+        ctxo.drawImage(video, 0, 0, co.width, co.height);
         //Insert image converter here
         {
             var widthruns = 0;
