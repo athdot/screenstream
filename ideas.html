@@ -27,7 +27,7 @@
         thumbs.appendChild(c);
     },100);
 
-    function generateThumbnail() {
+    while(video.currentTime < video.duration) {
         video.currentTime = time;
         var frames = parseInt(document.getElementById("framesmade").value);
         var c = document.createElement("canvas");
