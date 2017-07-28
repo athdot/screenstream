@@ -53,8 +53,8 @@
             var heightruns = 0;
             var canvaswidth = c.width;
             var canvasheight = c.height;
-            while(canvaswidth > widthruns){
-                while(canvasheight > heightruns){
+            while(canvaswidth >= widthruns){
+                while(canvasheight >= heightruns){
                     var vidstring = document.cookie;
                     data = ctx.getImageData(widthruns,heightruns, 1, 1).data;
      	            var data = data.toString();
