@@ -31,6 +31,7 @@
     document.body.appendChild(cs);
     var startDate = new Date();
     var startTime = startDate.getTime();
+    setTimeout(function(){
         var video = document.getElementById("vidmaster");
         document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
         var c = document.createElement("canvas");
@@ -39,6 +40,7 @@
         c.height = video.videoHeight;
         c.id = "vid";
         thumbs.appendChild(c);
+    },100);
     function generateThumbnail() {
         var video = document.getElementById("vidmaster");
         var frames = parseInt(document.getElementById("framesmade").value);
