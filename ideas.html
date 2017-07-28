@@ -35,16 +35,18 @@
     setTimeout(function(){
         document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
     },100);
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    c.width = video.videoWidth;
+    c.height = video.videoHeight;
+    c.id = "vid";
+    thumbs.appendChild(c);
 
     function generateThumbnail() {
         var frames = parseInt(document.getElementById("framesmade").value);
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
-        c.width = video.videoWidth;
-        c.height = video.videoHeight;
-        c.id = "vid" + frames;
         ctx.drawImage(video, 0, 0, c.width, c.height);
-        thumbs.appendChild(c);
         //Insert image converter here
         {
             var widthruns = 0;
@@ -63,7 +65,6 @@
                 document.cookie = document.cookie + ",F"
                 var widthruns = widthruns + 1;
             }
-            document.getElementById("vid"+frames).remove();
         }
         //End converter
         document.getElementById("framesmade").value = frames + 1;
