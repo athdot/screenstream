@@ -6,22 +6,30 @@
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
+    var vidbox = document.getElementById("vidbox");
+    var preveiw = document.createElement("video");
+    preveiw.src = "https://athdot.github.io/screenstream/trailer.mp4";
+    preveiw.style = "width: 10%;";
+    video.preload = "auto";
+    vidbox.appendChild(preveiw);
     var i = 0;
     var video = document.createElement("video");
     var thumbs = document.getElementById("thumbs");
     video.addEventListener('loadeddata', function() {
         video.currentTime = i;
+        preveiw.currentTime = p;
     }, false);
     video.addEventListener('seeked', function() {
         generateThumbnail(i);
         i += 0.02;
+        p += 0.02;
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
             document.write(document.getElementById("completelength").innerHTML);
         }
     }, false);
-    video.preload = "auto"
+    video.preload = "auto";
     video.src = "https://athdot.github.io/screenstream/trailer.mp4";
     video.id = "vidmaster";
     video.style = "display:none;";
