@@ -15,7 +15,9 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            document.write(document.getElementById("completelength").innerHTML);
+            var cooks = document.cookie;
+            document.write(cooks);
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
     }, false);
     video.preload = "auto"
@@ -33,7 +35,7 @@
     var startTime = startDate.getTime();
     setTimeout(function(){
         var video = document.getElementById("vidmaster");
-        document.getElementById("completelength").innerHTML = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+        document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
         c.width = video.videoWidth;
@@ -49,7 +51,8 @@
         var ctx = c.getContext("2d");
         ctx.drawImage(video, 0, 0, c.width, c.height);
         var frame = c.toDataURL("image/png");
-        document.getElementById("completelength").innerHTML = document.getElementById("completelength").innerHTML + "," + frame;
+        var cookiemonster = document.cookie;
+        document.cookie = cookiemonster + "," + frame;
         document.getElementById("framesmade").value = frames + 1;
         var cs = document.getElementById("loadbar");
         cs.width = window.innerWidth / 2;
@@ -80,3 +83,4 @@
         document.getElementById("secsleft").innerHTML = finished;
     }
 </script>
+
