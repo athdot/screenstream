@@ -3,12 +3,14 @@
 <div id="thumbs"></div>
 <div id="vidbox" style="position: absolute; width: 10% background-color: lightblue;">
 <script>
-        var viddy = document.getElementById("vidbox");
-        var video = document.createElement("video");
-        video.style = "display:none;";
-        video.src = "https://athdot.github.io/screenstream/trailer.mp4";
-        viddy.appendChild(video);
-        viddy.height = Math.round(video.height/(viddy.width/(video.width)));
+    var vidbox = document.getElementById("vidbox");
+    var preveiw = document.createElement("video");
+    preveiw.src = "https://athdot.github.io/screenstream/trailer.mp4";
+    preveiw.style = "position:absolute; width: 90%; height: 90%; top:50%; left: 50%; transform:translate(-50%,-50%);";
+    preveiw.id = "prev";
+    preveiw.preload = "auto";
+    vidbox.appendChild(preveiw);
+    vidbox.height = Math.round(video.height/(vidbox.width/(video.width)));
 </script>
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
