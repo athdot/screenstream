@@ -10,11 +10,13 @@
     var preveiw = document.createElement("video");
     preveiw.src = "https://athdot.github.io/screenstream/trailer.mp4";
     preveiw.style = "width: 10%;";
-    video.preload = "auto";
+    preveiw.id = "prev";
+    preveiw.preload = "auto";
     vidbox.appendChild(preveiw);
     var i = 0;
     var video = document.createElement("video");
     var thumbs = document.getElementById("thumbs");
+    var preveiw = document.getElementById("prev");
     video.addEventListener('loadeddata', function() {
         video.currentTime = i;
         preveiw.currentTime = p;
