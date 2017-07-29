@@ -1,6 +1,9 @@
 <input type="text" id="framesmade" value="0" style="display:none;" />
 <div id="completelength" style="display:none; width: 100%; height: 100%; position:absolute; top: 0; left: 0;"></div>
 <div id=thumbs></div>
+<div id="vidbox">
+    <object data="https://athdot.github.io/screenstream/trailer.mp4" style="width: 10%;"></object>
+</div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
     var i = 0;
@@ -15,9 +18,7 @@
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
-            var cooks = document.cookie;
-            document.write(cooks);
-            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.write(document.getElementById("completelength").innerHTML);
         }
     }, false);
     video.preload = "auto"
@@ -35,7 +36,7 @@
     var startTime = startDate.getTime();
     setTimeout(function(){
         var video = document.getElementById("vidmaster");
-        document.cookie = "FPS:50," + video.videoWidth + "," + video.videoHeight;
+        document.getElementById("completelength").innerHTML = "FPS:50," + video.videoWidth + "," + video.videoHeight;
         var c = document.createElement("canvas");
         var ctx = c.getContext("2d");
         c.width = video.videoWidth;
@@ -51,8 +52,7 @@
         var ctx = c.getContext("2d");
         ctx.drawImage(video, 0, 0, c.width, c.height);
         var frame = c.toDataURL("image/png");
-        var cookiemonster = document.cookie;
-        document.cookie = cookiemonster + "," + frame;
+        document.getElementById("completelength").innerHTML = document.getElementById("completelength").innerHTML + "," + frame;
         document.getElementById("framesmade").value = frames + 1;
         var cs = document.getElementById("loadbar");
         cs.width = window.innerWidth / 2;
@@ -83,4 +83,3 @@
         document.getElementById("secsleft").innerHTML = finished;
     }
 </script>
-
