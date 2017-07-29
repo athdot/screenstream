@@ -3,9 +3,12 @@
 <div id="thumbs"></div>
 <div id="vidbox" style="position: absolute; width: 10% background-color: lightblue;">
 <script>
+        var viddy = document.getElementById("vidbox");
         var video = document.createElement("video");
+        video.style = "display:none;";
         video.src = "https://athdot.github.io/screenstream/trailer.mp4";
-        document.getElementById("vidbox").height = Math.round(video.height/((document.getElementById("vidbox").width)/(video.width)));
+        viddy.appendChild(video);
+        viddy.height = Math.round(video.height/(viddy.width/(video.width)));
 </script>
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
