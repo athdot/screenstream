@@ -6,11 +6,14 @@
     var vidbox = document.getElementById("vidbox");
     var preveiw = document.createElement("video");
     preveiw.src = "https://athdot.github.io/screenstream/trailer.mp4";
-    preveiw.style = "position:absolute; width: 90%; height: 90%; top:50%; left: 50%; transform:translate(-50%,-50%);";
+    preveiw.style = "position:absolute; top:50%; left: 50%; transform:translate(-50%,-50%);";
     preveiw.id = "prev";
     preveiw.preload = "auto";
     vidbox.appendChild(preveiw);
-    vidbox.height = preveiw.height/(vidbox.width/(preveiw.width));
+    var preveiw = document.getElementById("prev");
+    vidbox.height = Math.round(preveiw.height/(vidbox.width/(preveiw.width)));
+    preveiw.height = Math.round((vidbox.height/10)*9);
+    preveiw.width = Math.round((vidbox.width/10)*9);
 </script>
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
