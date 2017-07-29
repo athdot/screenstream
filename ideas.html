@@ -1,9 +1,7 @@
 <input type="text" id="framesmade" value="0" style="display:none;" />
 <div id="completelength" style="display:none; width: 100%; height: 100%; position:absolute; top: 0; left: 0;"></div>
 <div id=thumbs></div>
-<div id="vidbox">
-    <object data="https://athdot.github.io/screenstream/trailer.mp4" style="width: 10%;"></object>
-</div>
+<div id="vidbox"></div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
     var vidbox = document.getElementById("vidbox");
@@ -16,15 +14,12 @@
     var i = 0;
     var video = document.createElement("video");
     var thumbs = document.getElementById("thumbs");
-    var preveiw = document.getElementById("prev");
     video.addEventListener('loadeddata', function() {
         video.currentTime = i;
-        preveiw.currentTime = p;
     }, false);
     video.addEventListener('seeked', function() {
         generateThumbnail(i);
         i += 0.02;
-        p += 0.02;
         if (i <= video.duration) {
             video.currentTime = i;
         } else {
@@ -56,6 +51,8 @@
         thumbs.appendChild(c);
     },100);
     function generateThumbnail() {
+        var preveiw = document.getElementById("prev");
+        preveiw.currentTime += 0.02;
         var video = document.getElementById("vidmaster");
         var frames = parseInt(document.getElementById("framesmade").value);
         var c = document.getElementById("vid");
