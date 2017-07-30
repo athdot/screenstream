@@ -1,20 +1,6 @@
 <input type="text" id="framesmade" value="0" style="display:none;" />
 <div id="completelength" style="display:none; width: 100%; height: 100%; position:absolute; top: 0; left: 0;"></div>
 <div id="thumbs"></div>
-<div id="vidbox" style="position: absolute; background-color: lightblue;">
-<script>
-    var vidbox = document.getElementById("vidbox");
-    var preveiw = document.createElement("video");
-    preveiw.src = "https://athdot.github.io/screenstream/trailer.mp4";
-    preveiw.style = "position:absolute; top:50%; left: 50%; transform:translate(-50%,-50%);";
-    preveiw.id = "prev";
-    preveiw.preload = "auto";
-    vidbox.appendChild(preveiw);
-    setTimeout(function(){
-    var preveiw = document.getElementById("prev");
-    console.log(preveiw.height);
-    },100);
-</script>
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
 <script>
