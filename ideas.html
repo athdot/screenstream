@@ -10,7 +10,10 @@
     preveiw.id = "prev";
     preveiw.preload = "auto";
     vidbox.appendChild(preveiw);
-    console.log(preveiw.videoWidth);
+    setTimeout(function(){
+        var preveiw = document.getElementById("prev");
+        console.log(preveiw.videoWidth);
+    },100);
 </script>
 </div>
 <div id="secsleft" style="position:absolute; top: 50%; left: 50%; transform:translate(-40%,200%);">1000 Seconds left</div>
